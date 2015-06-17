@@ -107,7 +107,7 @@ $pagination-link-current-active-bg: $primary-color !default;
       height: $pagination-li-height;
       margin-#{$default-float}: $pagination-li-margin;
 
-      a, button {
+      > * {
         @include radius;
         @include single-transition(background-color);
         background: none;
@@ -128,6 +128,7 @@ $pagination-link-current-active-bg: $primary-color !default;
       @if $use-default-classes {
         &.unavailable { @include pagination-unavailable-item(); }
         &.current { @include pagination-current-item(); }
+        .current { @include pagination-current-item(false); }
       }
     }
   }

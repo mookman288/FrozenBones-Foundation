@@ -14,7 +14,6 @@
 						</header>
 						<section class="content">
 							<?php the_content(); ?>
-							<?php get_search_form(); ?>
 						</section>
 						<footer>
 							<?php _frozen_page_navi(); ?>

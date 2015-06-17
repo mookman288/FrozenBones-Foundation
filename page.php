@@ -36,9 +36,6 @@
 											</p>
 										<?php } ?>
 									</section>
-									<aside>
-										<?php _frozen_page_navi(); ?>
-									</aside>
 								</footer>
 							<?php } ?>
 						</section>
@@ -47,6 +44,9 @@
 							<?php _frozen_not_found(); ?>
 						</section>
 					<?php endif; ?>
+					<footer>
+						<?php _frozen_page_navi(); ?>
+					</footer>
 				</section>
 				<?php get_sidebar(); ?>
 			</section>
