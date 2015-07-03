@@ -209,10 +209,20 @@
 		'after' => '',
 		'link_before' => '',
 		'link_after' => '',
-		'items_wrap' => '<nav class="%1$s top-bar-section" role="navigation">
-					<ul class="%2$s">
-						%3$s
+		'items_wrap' => '<nav class="%1$s top-bar-section" data-topbar role="navigation">
+					<ul class="title-area">
+						<li class="name"></li>
+						<li class="toggle-topbar menu-icon">
+							<a href="javascript:void(0)">
+								<span>Tools</span>
+							</a>
+						</li>
 					</ul>
+					<section class="top-bar-section row">
+						<ul class="%2$s">
+							%3$s
+						</ul>
+					</section>
 				</nav>',
 		'depth' => 0, 
 		'walker' => new Foundation_Walker(), 
@@ -240,7 +250,7 @@
 							<ul class="title-area">
 								<li class="name"></li>
 								<li class="toggle-topbar menu-icon">
-									<a href="#">
+									<a href="javascript:void(0)">
 										<span>Menu</span>
 									</a>
 								</li>
@@ -257,11 +267,11 @@
 													<span class="nod">Search</span>
 												</label>
 											</div>
-											<div class="column medium-8">
+											<div class="column small-8">
 												<input id="s" name="s" type="text" value="' . $s . '" 
 														placeholder="Search&hellip;" />
 											</div>
-											<div class="column medium-4">
+											<div class="column small-4">
 												<button type="submit" class="button">
 													<span class="i-search"></span>
 													<span class="nod">Go</span>

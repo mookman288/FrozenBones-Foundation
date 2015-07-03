@@ -25,6 +25,8 @@ body {
 /* Page Work */
 
 .site-information {
+	padding-left: 0px;
+	
 	span {
 		@extend .nod;
 	}
@@ -32,6 +34,10 @@ body {
 	img {
 		height: 2.00rem;
 	}
+}
+
+.pre-nav {
+	padding-right: 0px;
 }
 
 .top-bar-section {
@@ -92,4 +98,28 @@ body {
 
 .widget {
 	@extend .panel;
+}
+
+/* Responsive */
+
+@media #{$small-only} {
+	.top-bar-section ul li:not(.toggle-topbar) {
+		> a {
+			padding: ($topbar-height / 3);
+			
+			&:not(.back) {
+				background-color: $topbar-bg-color;
+				border-width: 0px;
+				border-bottom: 1px;
+				border-color: $topbar-link-bg-hover;
+				border-style: solid;
+			}
+		}
+		
+		.back a {
+			font-size: $topbar-link-font-size;
+			font-variant: small-caps;
+			text-transform: lowercase;
+		}
+	}
 }
