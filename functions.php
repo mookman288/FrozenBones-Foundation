@@ -209,7 +209,7 @@
 		'after' => '',
 		'link_before' => '',
 		'link_after' => '',
-		'items_wrap' => '<nav class="%1$s top-bar-section" data-topbar role="navigation">
+		'items_wrap' => '<nav class="%1$s" role="navigation">
 					<ul class="title-area">
 						<li class="name"></li>
 						<li class="toggle-topbar menu-icon">
