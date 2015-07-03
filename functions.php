@@ -214,7 +214,7 @@
 						<li class="name"></li>
 						<li class="toggle-topbar menu-icon">
 							<a href="javascript:void(0)">
-								<span>Tools</span>
+								<span></span>
 							</a>
 						</li>
 					</ul>
