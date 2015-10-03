@@ -6,7 +6,8 @@
 	//Declare variables. 
 	$total	=	$wp_query -> found_posts;
 	$total	=	($total !== 1) ? __("$total results found", 'bones-theme') : __("$total result found", 'bones-theme');
-	$header	=	(!isset($_GET['s'])) ? "$total." : "$total " . __("searching for <em>" . $_GET['s'] . "</em>.", 'bones-theme');
+	$header	=	(!isset($_GET['s'])) ? "$total." : "$total " . __(sprintf("searching for <em>%s</em>.", 
+			stripslashes($_GET['s'])), 'bones-theme');
 ?>
 			<section class="page row">
 				<section class="column large-8 medium-7 small-12">	
@@ -29,14 +30,9 @@
 										_frozen_get_the_author_posts_link());
 									?>
 								</p>
-								<?php if (has_post_thumbnail()) { ?>
-									<div class="featured-image">
-										<?php the_post_thumbnail('full'); ?>
-									</div>
-								<?php } ?>
 							</header>
 							<section class="content">
-								<?php the_content(); ?>
+								<?php the_excerpt(); ?>
 							</section>
 							<?php if (strlen(get_the_category_list()) > 1 || has_tag()) { ?>
 								<footer>

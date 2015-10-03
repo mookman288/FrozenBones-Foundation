@@ -27,7 +27,8 @@
 			//If this isn't the admin panel.
 			if (!is_admin()) {
 				//Get all CSS files.
-				$css	=	preg_grep('/login\.css/', glob(sprintf("%s/css/*.{css}", CHILD_DIR), GLOB_BRACE), PREG_GREP_INVERT);
+				$css	=	preg_grep('/login\.css/', glob(sprintf("%s/css/*.{css}", CHILD_DIR), GLOB_BRACE), 
+						PREG_GREP_INVERT);
 			
 				//For each CSS file.
 				foreach($css as $file) {
@@ -73,6 +74,18 @@
 			add_action('wp_enqueue_scripts', '_frozen_child_queue', 999);
 		}
 	}
+	
+	/**
+	 * Queue login CSS.
+	 */
+	function	_frozen_login_css() {
+		//Queue the login CSS.
+		wp_enqueue_style('frozen_login_css', PUBLIC_DIR . '/css/login.css', false);
+	}
+	
+	//Add the login modifications.
+	add_action('login_enqueue_scripts', '_frozen_login_css', 10);
+	
 	/**
 	 * A foundation-based walker for navigation dropdown menues.
 	 * 
@@ -234,7 +247,7 @@
 	 */
 	function	mainNavigation() {
 		//Get the search value.
-		$s	=	(!isset($_GET['s'])) ? null : $_GET['s'];
+		$s	=	(!isset($_GET['s'])) ? null : stripslashes($_GET['s']);
 		
 		//Output navigation.
 		wp_nav_menu(array(

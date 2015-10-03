@@ -64,12 +64,38 @@ body {
 	color: #FFF;
 }
 
-.breadcrumbs * {
-	display: inline;
-	list-style-type: none;
+.breadcrumbs {
+	* {
+		display: inline;
+		list-style-type: none;
+	}
+	
+	li {
+		padding: 0.50em 0px;
+	}
 }
 
+
 .content {
+	img {
+		margin-bottom: 1.25rem;
+		max-width: 100.00%;
+	}
+	
+	figure {
+		margin: 0px;
+		margin-bottom: 1.25rem;
+		max-width: 100.00%;
+		
+		figcaption {
+			text-align: center;
+		}
+		
+		img {
+			margin: 0px;
+		}
+	}
+	
 	* {
 		word-wrap: break-word;
 	}

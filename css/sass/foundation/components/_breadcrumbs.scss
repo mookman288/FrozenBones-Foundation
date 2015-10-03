@@ -99,7 +99,7 @@ $crumb-slash: "/" !default;
     }
   }
 
-  &:before {
+  &:after {
     color: $crumb-slash-color;
     content: "#{$crumb-slash}";
     margin: 0 $crumb-side-padding;
@@ -107,7 +107,7 @@ $crumb-slash: "/" !default;
     top: 1px;
   }
 
-  &:first-child:before {
+  &:last-child:after {
     content: " ";
     margin: 0;
   }

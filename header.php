@@ -6,7 +6,8 @@
 					<div class="site-information">
 						<a href="<?php print(home_url()); ?>">
 							<span class="website"><?php bloginfo('name'); ?></span>
-							<img src="<?php bloginfo('template_directory'); ?>/images/logo.png" alt="<?php bloginfo('name'); ?>" />
+							<img src="<?php print(get_stylesheet_directory_uri()); ?>/images/logo.png" 
+								alt="<?php bloginfo('name'); ?>" />
 						</a>
 					</div>
 					<?php headerNavigation(); ?>
@@ -18,4 +19,3 @@
 				</div>
 				<?php mainNavigation(); ?>
 			</header>
-			
