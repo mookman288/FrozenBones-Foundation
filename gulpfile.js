@@ -11,6 +11,7 @@ var	jshint		=	require('gulp-jshint');
 var	cssnano		=	require('gulp-cssnano');
 var notify	  	=   require('gulp-notify');
 var	rename		=	require('gulp-rename');
+var replace		=	require('gulp-replace');
 var	sass		=	require('gulp-sass');
 var sourcemaps	=	require('gulp-sourcemaps');
 var	uglify		=	require('gulp-uglify');
@@ -55,6 +56,7 @@ version	=	version.join('.');
 gulp.task('sass', function() {
 	//Run Gulp.
 	return gulp.src('./src/sass/stylesheet.scss')
+		.pipe(gulpif(!die, gulpif(dev, sourcemaps.init())))
 		.pipe(sass({
 			sourcemap: true, 
 			outputStyle: 'expanded',
@@ -70,7 +72,6 @@ gulp.task('sass', function() {
 			//Return the error.
 			return error;
 		}))
-		.pipe(gulpif(!die, gulpif(dev, sourcemaps.init())))
 		.pipe(autoprefix({browsers: '> 5%'}))
 		.pipe(gulpif(!die, gulpif(!dev, cssnano())))
 		.pipe(gulpif(!die, gulpif(dev, sourcemaps.write())))
@@ -112,34 +113,17 @@ gulp.task('hint', function() {
 gulp.task('js', function() {
 	//Run Gulp.
 	return gulp.src([
-			'./node_modules/foundation-sites/js/foundation.core.js',
-			'./node_modules/foundation-sites/js/foundation.util.box.js',
-			'./node_modules/foundation-sites/js/foundation.util.keyboard.js',
-			'./node_modules/foundation-sites/js/foundation.util.mediaQuery.js',
-			'./node_modules/foundation-sites/js/foundation.util.motion.js',
-			'./node_modules/foundation-sites/js/foundation.util.nest.js',
-			'./node_modules/foundation-sites/js/foundation.util.timerAndImageLoader.js',
-			'./node_modules/foundation-sites/js/foundation.util.touch.js',
-			'./node_modules/foundation-sites/js/foundation.util.triggers.js',
-			'./node_modules/foundation-sites/js/foundation.accordion.js',
-			'./node_modules/foundation-sites/js/foundation.drilldown.js',
-			'./node_modules/foundation-sites/js/foundation.dropdown.js',
-			'./node_modules/foundation-sites/js/foundation.dropdownMenu.js',
-			'./node_modules/foundation-sites/js/foundation.interchange.js',
-			'./node_modules/foundation-sites/js/foundation.offcanvas.js',
-			'./node_modules/foundation-sites/js/foundation.orbit.js',
-			'./node_modules/foundation-sites/js/foundation.responsiveMenu.js',
-			'./node_modules/foundation-sites/js/foundation.responsiveToggle.js',
-			'./node_modules/foundation-sites/js/foundation.reveal.js',
-			'./node_modules/foundation-sites/js/foundation.slider.js',
-			'./node_modules/foundation-sites/js/foundation.sticky.js',
-			'./node_modules/foundation-sites/js/foundation.tabs.js',
-			'./node_modules/foundation-sites/js/foundation.toggler.js',
-			'./node_modules/foundation-sites/js/foundation.tooltip.js',
+			'./node_modules/foundation-sites/dist/js/foundation.js',
 			'./src/js/**/*.js'
 		])
+		.pipe(gulpif(!dev, uglify({'preserveComments': 'license'}).on('error', notify.onError(function(error) {
+			//Log to the console.
+			console.error(error);
+			
+			//Return the error.
+			return error;
+		}))))
 		.pipe(concat('main.js'))
-		.pipe(gulpif(!dev, uglify({'preserveComments': 'license'})))
 		.pipe(gulp.dest('./js/'));
 });
 
