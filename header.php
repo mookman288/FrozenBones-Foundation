@@ -1,21 +1,15 @@
-<?php require_once(CHILD_DIR . '/head.php'); ?>
+<?php require_once(get_template_directory() . '/head.php'); ?>
 	<body <?php body_class(); ?>>
-		<section class="container">
-			<header class="contain-to-grid">
-				<div class="top-bar" data-topbar>
-					<div class="site-information">
-						<a href="<?php print(home_url()); ?>">
-							<span class="website"><?php bloginfo('name'); ?></span>
-							<img src="<?php print(get_stylesheet_directory_uri()); ?>/images/logo.png" 
-								alt="<?php bloginfo('name'); ?>" />
-						</a>
-					</div>
-					<?php headerNavigation(); ?>
+		<section id="container">
+			<header>
+				<?php headerNavigation(); ?>
+				<a href="<?php print(home_url()); ?>" rel="nofollow"><?php 
+					?><img src="<?php bloginfo('template_directory'); ?>/images/logo.png" 
+					alt="<?php bloginfo('name'); ?>" /><?php 
+				?></a>
+				<div class="site-information">
+					<span class="website"><?php bloginfo('name'); ?></span>
+					<span class="description"><?php bloginfo('description'); ?></span>
 				</div>
-				<div class="hero">
-					<div class="row">
-						<span class="description"><?php bloginfo('description'); ?></span>
-					</div>			
-				</div>
-				<?php mainNavigation(); ?>
 			</header>
+			<?php mainNavigation(); ?>
